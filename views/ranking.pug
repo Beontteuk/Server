@@ -1,0 +1,22 @@
+html
+  head
+    title=title
+  body
+    h1 
+      a(href='/') API 테스트
+    h2 랭킹
+    table(border='1')
+      tbody
+        tr
+          th 등수
+          th 유저 아이디
+          th qr code 개수
+          th 서약서 리스트
+          //- -console.log(users)
+          //- -console.log(users.length)
+        -for (var index = 0; index < users.length; index++)
+          tr
+            td #{index + 1}
+            td #{users[index].user_id}
+            td #{users[index].qr_count}
+            td #{users[index].pledges}

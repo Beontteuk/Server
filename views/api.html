@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>API 테스트</title>
+</head>
+
+<body>
+    <h1>API 테스트</h1>
+    <hr>
+    <button onclick="location.href='/data'">data</button>
+    <h3>회원가입</h3>
+    <form action="/account/signup" method="post">
+        <p><input type="text" name="name" placeholder="이름 입력"></p>
+        <p><input type="text" name="email" placeholder="email 입력"></p>
+        <p><input type="text" name="password" placeholder="password 입력"></p>
+        <p><input type="text" name="password_check" placeholder="password 확인"></p>
+        <p><input type="text" name="nickname" placeholder="nickname 입력"></p>
+        <p>
+            <input type="submit" value="SEND">
+        </p>
+    </form>
+    <h3>로그인</h3>
+    <form action="/account/signin" method="post">
+        <p><input type="text" name="email" placeholder="email 입력"></p>
+        <p><input type="text" name="password" placeholder="password 입력"></p>
+        <p>
+            <input type="submit" value="SEND">
+        </p>
+    </form>
+    <h3>닉네임 중복 확인</h3>
+    <form action="/account/check-duplication" method="post">
+        <p><input type="text" name="nickname" placeholder="nickname 입력"></p>
+        <p>
+            <input type="submit" value="SEND">
+        </p>
+    </form>
+
+</body>
+
+</html>
