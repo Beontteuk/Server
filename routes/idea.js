@@ -2,8 +2,9 @@ const express = require("express")
 const router = express.Router()
 const postgresql = require('../lib/postgresql')
 
-//회원가입
+//아이디어 신규작성
 router.post('/create', async (req,res)=>{
+    let returndata = {"message":null, "result":{}}
     const data = req.body;
     
     //user_id
@@ -39,6 +40,8 @@ router.post('/create', async (req,res)=>{
     ,[data.user_id])
 
     await pg.disconnect()
+
+    returndata.message = "작성 성공"
     return res.status(201).send({})
 })
 

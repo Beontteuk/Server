@@ -107,10 +107,12 @@ router.post('/check-duplication', async (req,res)=>{
 
     if(result.rowCount > 0){
         returndata.message = '중복된 닉네임입니다'
+        returndata.result = {success: false}
         return res.status(400).json(returndata)
     }
 
     returndata.message = '사용 가능한 닉네임입니다'
+    returndata.result = {success: true}
     return res.status(200).send(returndata)
 })
 
