@@ -33,6 +33,14 @@ router.post('/create', async (req,res)=>{
         `
     ,[data.user_id, data.title, data.overview, data.description, data.price])
 
+    await pg.client.query(
+        `
+        UPDATE user_activities
+        SET idea_cnt = idea_cnt + 1
+        WHERE user_id = $1
+        `
+    ,[data.user_id])
+
     await pg.disconnect()
     return res.status(201).send({})
 })
