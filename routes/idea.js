@@ -16,15 +16,15 @@ router.post('/create', async (req,res)=>{
     const pg = new postgresql()
     await pg.connect()
 
-    const result = await pg.client.query(
-        `
-        SELECT FROM users
-        WHERE index=$1
-        RETURNING nickname
-        `
-    ,[data.user_id])
+    // const result = await pg.client.query(
+    //     `
+    //     SELECT FROM users
+    //     WHERE index=$1
+    //     RETURNING index
+    //     `
+    // ,[data.user_id])
 
-    if(result.rowCount == 0) return res.status(400).send({'errmsg':'계정이 존재하지 않음'})
+    // if(result.rowCount == 0) return res.status(400).send({'errmsg':'계정이 존재하지 않음'})
 
     await pg.client.query(
         `

@@ -14,11 +14,12 @@ app.use(express.json());
 
 app.use(express.static(__dirname + "/"));
 app.use('/style', express.static(__dirname + '/stylesheets'))
-app.use('/img', express.static(__dirname + '/images'))
+app.use('/images', express.static(__dirname + '/images'))
 
 app.use('/', require('./routes/page.js'))
 app.use('/data', require('./routes/data.js'))
 app.use('/account', require('./routes/account.js'))
+app.use('/idea', require('./routes/idea.js'))
 
 // app.use('/team', require('./routes/team.js'))
 
