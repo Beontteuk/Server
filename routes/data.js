@@ -52,13 +52,28 @@ router.get('/ideas', async (req,res)=>{
     return res.status(200).json(data)
 })
 
+router.get('/collections', async (req,res)=>{
+    const pg = new postgresql()
+    await pg.connect()
+
+    const result = await pg.client.query(
+        `
+        SELECT * FROM collections
+        `
+    )
+
+    await pg.disconnect()
+    let data = {result : result.rows};
+    return res.status(200).json(data)
+})
+
 router.get('/truncate', async (req,res)=>{
     const pg = new postgresql()
     await pg.connect()
 
     await pg.client.query(
         `
-        TRUNCATE users, user_activities, ideas RESTART IDENTITY;
+        TRUNCATE users, user_activities, ideas, collections RESTART IDENTITY;
         `
     )
 

@@ -4,6 +4,8 @@ const postgresql = require('../lib/postgresql')
 
 //회원가입
 router.post('/signup', async (req,res)=>{
+    let returndata = {"message":null, "result":{}}
+
     const data = req.body;
     
     //name
@@ -15,7 +17,10 @@ router.post('/signup', async (req,res)=>{
     //nickname_validate
 
     //if(!data.nickname_validate) return res.status(400).send({'errmsg':'닉네임 중복을 확인해주세요'})
-    if(data.password != data.password_check) return res.status(400).send({'errmsg':'비밀번호 확인 실패'})
+    if(data.password != data.password_check) {
+        returndata.message = '비밀번호 확인 실패'
+        return res.status(400).send(returndata)
+    }
 
     const pg = new postgresql()
     await pg.connect()
@@ -39,11 +44,14 @@ router.post('/signup', async (req,res)=>{
     ,[result.rows[0].index, result.rows[0].nickname])
 
     await pg.disconnect()
-    return res.status(200).send({})
+
+    returndata.message = '회원가입 성공'
+    return res.status(201).json(returndata)
 })
 
 //로그인
 router.post('/signin', async (req,res)=>{
+    let returndata = {"message":null, "result":{}}
     const data = req.body;
     
     //email
@@ -61,17 +69,29 @@ router.post('/signin', async (req,res)=>{
 
     await pg.disconnect()
 
-    if(result.rowCount == 0) return res.status(400).send({'errmsg':'계정이 존재하지 않음'})
-    else if(result.rows[0].password != data.password) return res.status(400).send({'errmsg':'비밀번호 틀림'})
-    else return res.status(200).send({'msg':'로그인 성공'})
+    
+    
 
-    
-    
-    
+    if(result.rowCount == 0) {
+        returndata.message = '계정이 존재하지 않음'
+        return res.status(400).json(returndata)
+    }
+
+    else if(result.rows[0].password != data.password) {
+        returndata.message = '비밀번호 틀림'
+        return res.status(400).json(returndata)
+    }
+    else {
+        returndata.message = '로그인 성공'
+        return res.status(200).json(returndata)
+    }
+
 })
 
 // 닉네임 중복 확인
 router.post('/check-duplication', async (req,res)=>{
+    let returndata = {"message":null, "result":{}}
+
     const nickname = req.body.nickname
 
     const pg = new postgresql()
@@ -86,10 +106,12 @@ router.post('/check-duplication', async (req,res)=>{
     await pg.disconnect()
 
     if(result.rowCount > 0){
-        return res.status(400).send({'errmsg':'중복된 닉네임입니다'})
+        returndata.message = '중복된 닉네임입니다'
+        return res.status(400).json(returndata)
     }
 
-    return res.status(200).send({'msg':'사용 가능한 닉네임입니다'})
+    returndata.message = '사용 가능한 닉네임입니다'
+    return res.status(200).send(returndata)
 })
 
 

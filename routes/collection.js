@@ -9,7 +9,6 @@ router.post('/add', async (req,res)=>{
     //user_id
     //idea_id
 
-
     const pg = new postgresql()
     await pg.connect()
 
@@ -19,14 +18,6 @@ router.post('/add', async (req,res)=>{
         VALUES($1, $2)
         `
     ,[data.user_id, data.idea_id])
-
-    await pg.client.query(
-        `
-        UPDATE user_activities
-        SET idea_cnt = idea_cnt + 1
-        WHERE user_id = $1
-        `
-    ,[data.user_id])
 
     await pg.disconnect()
     return res.status(201).send({})

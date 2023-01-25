@@ -46,8 +46,21 @@
 
         <p><textarea name="overview"></textarea></p>
         <p><textarea name="description"></textarea></p>
+        <p><textarea name="thumbnail"></textarea></p>
+
+        <p><input type="text" name="category" placeholder="category 입력"></p>
 
         <p><input type="text" name="price" placeholder="가격 입력"></p>
+        <p>
+            <input type="submit" value="SEND">
+        </p>
+    </form>
+
+    <h2>Collection</h2>
+    <h4>컬렉션 목록에 추가</h4>
+    <form action="/collection/add" method="post">
+        <p><input type="text" name="user_id" placeholder="user_id 입력"></p>
+        <p><input type="text" name="idea_id" placeholder="idea_id 입력"></p>
         <p>
             <input type="submit" value="SEND">
         </p>
