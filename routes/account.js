@@ -62,11 +62,11 @@ router.post('/signin', async (req,res)=>{
 
     const result = await pg.client.query(
         `
-        SELECT password FROM users
-        WHERE email=$1;
+        SELECT index, password FROM users
+        WHERE email=$1
         `
     ,[data.email])
-
+    
     await pg.disconnect()
 
     
@@ -83,6 +83,7 @@ router.post('/signin', async (req,res)=>{
     }
     else {
         returndata.message = '로그인 성공'
+        returndata.result = {"user_id": result.rows[0].index}               
         return res.status(200).json(returndata)
     }
 
@@ -99,9 +100,11 @@ router.post('/check-duplication', async (req,res)=>{
     const result = await pg.client.query(
         `
         SELECT * FROM users
-        WHERE nickname = $1
+        WHERE nickname = $1;
         `
     ,[nickname])
+
+    console.log(result.rows[0]);
     
     await pg.disconnect()
 
