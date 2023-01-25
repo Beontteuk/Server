@@ -22,8 +22,8 @@ router.post('/signup', async (req,res)=>{
 
     const result = await pg.client.query(
         `
-        INSERT INTO users(email, password, nickname)
-        VALUES($1, $2, $3)
+        INSERT INTO users(email, password, nickname, created)
+        VALUES($1, $2, $3, NOW())
         RETURNING index, nickname
         `
     ,[data.email, data.password, data.nickname])
