@@ -80,7 +80,18 @@
         </p>
     </form>
 
-    <
+    <h2>Mail</h2>
+    <h4>쪽지 보내기</h4>
+    <form action="/mail/send" method="post">
+        <p><input type="number" name="from_id" placeholder="보내는 사람 입력"></p>
+        <p><input type="number" name="to_id" placeholder="받는 사람 입력"></p>
+
+        <p><textarea name="description">쪽지 내용</textarea></p>
+        <p>
+            <input type="submit" value="SEND">
+        </p>
+    </form>
+    
 </body>
 
 </html>

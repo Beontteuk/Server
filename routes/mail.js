@@ -21,54 +21,33 @@ router.post('/send', async (req,res)=>{
         `
     ,[data.from_id, data.to_id, data.description])
 
-    await pg.client.query(
-        `
-        UPDATE user_activities
-        SET idea_cnt = idea_cnt + 1
-        WHERE user_id = $1
-        `
-    ,[data.user_id])
-
     await pg.disconnect()
 
     returndata.message = "쪽지 전송 성공"
     return res.status(201).json(returndata)
 })
 
-router.post('/update', async (req,res)=>{
+router.get('/:id', async (req,res)=>{
     let returndata = {"message":null, "result":{}}
-    const data = req.body;
 
-    //idea_id
-    
-    //user_id
-    //title
-    //overview
-    //description
-    //price
-
-    //category
-    //thumbnail
-
-    //is_commercial_available
-    //is_patent_available
-
-    
+    const id = req.params.id;
 
     const pg = new postgresql()
     await pg.connect()
 
-    await pg.client.query(
+    const result = await pg.client.query(
         `
-        INSERT INTO ideas(user_id, title, overview, description, created, price, category, thumbnail, is_commercial_available, is_patent_available)
-        VALUES($1, $2, $3, $4, NOW(), $5, $6, $7, $8, $9)
+        SELECT * FROM mails
+        WHERE from_id=$1 or to_id=$1
+        ORDER BY sended
         `
-    ,[data.user_id, data.title, data.overview, data.description, data.price, data.category, data.thumbnail, true, true])
+    ,[id])
 
     await pg.disconnect()
 
-    returndata.message = "수정 성공"
-    return res.status(201).send({})
+    returndata.message = "쪽지 조회 성공"
+    returndata.result = result.rows
+    return res.status(200).json(returndata)
 })
 
 
