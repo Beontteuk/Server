@@ -27,7 +27,7 @@ router.post('/send', async (req,res)=>{
     return res.status(201).json(returndata)
 })
 
-router.get('/:id', async (req,res)=>{
+router.get('/get/:id', async (req,res)=>{
     let returndata = {"message":null, "result":{}}
 
     const id = req.params.id;

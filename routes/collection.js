@@ -27,7 +27,7 @@ router.post('/add', async (req,res)=>{
 })
 
 //컬렉션에서 삭제
-router.post('/add', async (req,res)=>{
+router.post('/delete', async (req,res)=>{
     let returndata = {"message":null, "result":{}}
     const data = req.body
     

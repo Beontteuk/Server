@@ -41,7 +41,7 @@ router.post('/create', async (req,res)=>{
 
     await pg.disconnect()
 
-    returndata.message = "작성 성공"
+    returndata.message = "아이디어 작성 성공"
     return res.status(201).json(returndata)
 })
 
@@ -79,7 +79,30 @@ router.post('/update', async (req,res)=>{
 
     await pg.disconnect()
 
-    returndata.message = "수정 성공"
+    returndata.message = "아이디어 수정 성공"
+    return res.status(200).json(returndata)
+})
+
+router.post('/delete', async (req,res)=>{
+    let returndata = {"message":null, "result":{}}
+    const data = req.body;
+
+    //user_id
+    //idea_id
+
+    const pg = new postgresql()
+    await pg.connect()
+
+    await pg.client.query(
+        `
+        DELETE FROM ideas
+        WHERE user_id=$1 and idea_id=$2
+        `
+    ,[data.user_id, data.idea_id])
+
+    await pg.disconnect()
+
+    returndata.message = "아이디어 삭제 성공"
     return res.status(200).json(returndata)
 })
 

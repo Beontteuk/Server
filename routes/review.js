@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const postgresql = require('../lib/postgresql')
 
+//리뷰 목록 불러오기
 router.get('/', async (req,res)=>{
     let returndata = {"message":null, "result":{}}
 
@@ -21,6 +22,7 @@ router.get('/', async (req,res)=>{
     return res.status(200).json(returndata)
 })
 
+//리뷰 작성하기
 router.post('/create', async (req,res)=>{
     let returndata = {"message":null, "result":{}}
     const data = req.body;
