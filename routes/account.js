@@ -13,10 +13,7 @@ router.post('/signup', async (req,res)=>{
     //password
     //password_check
     //nickname
-    //nickname
-    //nickname_validate
 
-    //if(!data.nickname_validate) return res.status(400).send({'errmsg':'닉네임 중복을 확인해주세요'})
     if(data.password != data.password_check) {
         returndata.message = '비밀번호 확인 실패'
         return res.status(400).send(returndata)
@@ -39,7 +36,7 @@ router.post('/signup', async (req,res)=>{
     await pg.client.query(
         `
         INSERT INTO user_activities(user_id)
-        VALUES($1, $2)
+        VALUES($1)
         `
     ,[result.rows[0].index])
 

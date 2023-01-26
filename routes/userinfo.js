@@ -3,30 +3,50 @@ const router = express.Router()
 const postgresql = require('../lib/postgresql')
 
 //특정 유저의 정보 불러오기
+
 router.get('/:id', async (req,res)=>{
+    let returndata = {"message":null, "result":{}}
+
+    const id = req.params.id;
+
+    const pg = new postgresql()
+    await pg.connect()
+
+    const result = await pg.client.query(
+        `
+        SELECT * FROM users
+        WHERE index=$1;
+        `
+    ,[id])
+
+    await pg.disconnect()
+    returndata.message = '회원정보 불러오기 성공'
+    returndata.result = result.rows;
+    return res.status(200).json(returndata);
+})
+
+
+router.get('/profile/:id', async (req,res)=>{
+    let returndata = {"message":null, "result":{}}
+
     const id = req.params.id;
     
     const pg = new postgresql()
     await pg.connect()
 
-    await pg.client.query(
+    const result = await pg.client.query(
         `
-        SELECT index, nickname FROM users
-        INNER JOIN (SELECT point, idea_cnt, collection_cnt FROM user_activities) AS code
-        ON users.index = user_activites.index;
+        SELECT * FROM users
+        LEFT JOIN (SELECT index, point, idea_cnt, collection_cnt FROM user_activities) AS code
+        USING (index)
+        WHERE index=$1;
         `
-    ,[data.user_id, data.idea_id])
-
-
-    await pg.client.query(
-        `
-        SELECT nickname, point, idea_cnt, collection_cnt FROM user_activities
-        WHERE
-        `
-    ,[data.user_id, data.idea_id])
+    , [id])
 
     await pg.disconnect()
-    return res.status(201).send({})
+    returndata.message = '회원 상세정보 불러오기 성공'
+    returndata.result = result.rows;
+    return res.status(200).json(returndata);
 })
 
 

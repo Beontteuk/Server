@@ -23,7 +23,8 @@ app.use('/idea', require('./routes/idea.js'))
 app.use('/collection', require('./routes/collection.js'))
 app.use('/trade', require('./routes/trade.js'))
 app.use('/review', require('./routes/review.js'))
-
+app.use('/userinfo', require('./routes/userinfo.js'))
+app.use('/mail', require('./routes/mail.js'))
 
 http.listen(port, () => {
   console.log(`server listening on *:${port}`)
