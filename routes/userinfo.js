@@ -9,6 +9,14 @@ router.get('/:id', async (req,res)=>{
     const pg = new postgresql()
     await pg.connect()
 
+    await pg.client.query(
+        `
+        SELECT index, nickname FROM users
+        INNER JOIN (SELECT point, idea_cnt, collection_cnt FROM user_activities) AS code
+        ON users.index = user_activites.index;
+        `
+    ,[data.user_id, data.idea_id])
+
 
     await pg.client.query(
         `
