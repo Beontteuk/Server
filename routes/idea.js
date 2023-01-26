@@ -96,7 +96,7 @@ router.post('/delete', async (req,res)=>{
     await pg.client.query(
         `
         DELETE FROM ideas
-        WHERE user_id=$1 and idea_id=$2
+        WHERE user_id=$1 and index=$2
         `
     ,[data.user_id, data.idea_id])
 
