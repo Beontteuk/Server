@@ -38,10 +38,10 @@ router.post('/signup', async (req,res)=>{
 
     await pg.client.query(
         `
-        INSERT INTO user_activities(user_id, nickname)
+        INSERT INTO user_activities(user_id)
         VALUES($1, $2)
         `
-    ,[result.rows[0].index, result.rows[0].nickname])
+    ,[result.rows[0].index])
 
     await pg.disconnect()
 

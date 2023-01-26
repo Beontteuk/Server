@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const postgresql = require('../lib/postgresql')
 
-//회원가입
+//컬렉션에 추가
 router.post('/add', async (req,res)=>{
     const data = req.body;
     

@@ -21,8 +21,9 @@ app.use('/data', require('./routes/data.js'))
 app.use('/account', require('./routes/account.js'))
 app.use('/idea', require('./routes/idea.js'))
 app.use('/collection', require('./routes/collection.js'))
+app.use('/trade', require('./routes/trade.js'))
+app.use('/review', require('./routes/review.js'))
 
-// app.use('/team', require('./routes/team.js'))
 
 http.listen(port, () => {
   console.log(`server listening on *:${port}`)

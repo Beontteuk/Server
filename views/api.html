@@ -44,13 +44,13 @@
         <p><input type="text" name="user_id" placeholder="user_id 입력"></p>
         <p><input type="text" name="title" placeholder="title 입력"></p>
 
-        <p><textarea name="overview"></textarea></p>
-        <p><textarea name="description"></textarea></p>
-        <p><textarea name="thumbnail"></textarea></p>
+        <p><textarea name="overview">overview</textarea></p>
+        <p><textarea name="description">description</textarea></p>
+        <p><textarea name="thumbnail">thumbnail</textarea></p>
 
         <p><input type="text" name="category" placeholder="category 입력"></p>
 
-        <p><input type="text" name="price" placeholder="가격 입력"></p>
+        <p><input type="number" name="price" placeholder="가격 입력"></p>
         <p>
             <input type="submit" value="SEND">
         </p>
@@ -65,7 +65,26 @@
             <input type="submit" value="SEND">
         </p>
     </form>
-    
+    //customer_id
+    //seller_id
+    //idea_id
+
+    //title
+    //description
+    //rate
+    <h2>Review</h2>
+    <h4>리뷰 추가</h4>
+    <form action="/review/create" method="post">
+        <p><input type="number" name="customer_id" placeholder="customer_id 입력"></p>
+        <p><input type="number" name="idea_id" placeholder="idea_id 입력"></p>
+
+        <p><input type="text" name="title" placeholder="title 입력"></p>
+        <p><textarea name="description"></textarea></p>
+        <p><input type="number" name="rate" placeholder="별점 입력"></p>
+        <p>
+            <input type="submit" value="SEND">
+        </p>
+    </form>
 </body>
 
 </html>
