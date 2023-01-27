@@ -60,6 +60,7 @@ router.get('/:id', async (req,res)=>{
 
     returndata.message = '특정 아이디어 불러오기 성공'
     returndata.result = result.rows[0];
+    console.log(returndata);
     return res.status(200).json(returndata)
 })
 
