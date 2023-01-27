@@ -1,6 +1,5 @@
 const express = require("express")
 const router = express.Router()
-const postgresql = require('../lib/postgresql')
 const AWS = require("aws-sdk");
 
 AWS.config.update({
@@ -27,10 +26,11 @@ function createUrl(fileName) {
 //쪽지 신규작성
 router.get('/:filename', async (req,res)=>{
     let returndata = {"message":null, "result":{}}
-
-    createUrl(file)
-    returndata.message = "쪽지 전송 성공"
-    return res.status(201).json(returndata)
+    const filename = req.params.filename;
+    
+    returndata.message = "이미지 사인 성공"
+    returndata.result = createUrl(filename);
+    return res.status(200).json(returndata)
 })
 
 
