@@ -11,6 +11,7 @@ router.get('/', async (req,res)=>{
     const result = await pg.client.query(
         `
         SELECT * FROM ideas
+        ORDER BY created
         `
     )
     //console.log(result.rows);
@@ -30,10 +31,27 @@ router.get('/:id', async (req,res)=>{
     const pg = new postgresql()
     await pg.connect()
 
+    // const result = await pg.client.query(
+    //     `
+    //     SELECT * FROM users
+    //     LEFT JOIN ideas
+    //     ON ideas.user_id = users.index
+    //     WHERE ideas.index=$1
+    //     `
+    // ,[id]
+    // )
+
+
+
     const result = await pg.client.query(
         `
-        SELECT * FROM ideas
-        WHERE index=$1
+        SELECT ideas.user_id, users.nickname, 
+        ideas.title, ideas.overview, ideas.description, 
+        ideas.created, ideas.price, ideas.category, ideas.thumbnail,
+        ideas.is_commercial_available, ideas.is_patent_available,
+        ideas.rating_sum, ideas.rating_cnt, ideas.rating
+        FROM ideas, users
+        WHERE ideas.user_id=users.index and ideas.index=$1
         `
     ,[id]
     )

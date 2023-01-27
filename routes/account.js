@@ -86,8 +86,38 @@ router.post('/signin', async (req,res)=>{
 
 })
 
+// 이메일 중복 확인
+router.post('/check-duplication-email', async (req,res)=>{
+    let returndata = {"message":null, "result":{}}
+
+    const email = req.body.email
+
+    const pg = new postgresql()
+    await pg.connect()
+    const result = await pg.client.query(
+        `
+        SELECT * FROM users
+        WHERE email = $1;
+        `
+    ,[email])
+
+    console.log(result.rows[0]);
+    
+    await pg.disconnect()
+
+    if(result.rowCount > 0){
+        returndata.message = '중복된 이메일입니다'
+        returndata.result = {success: false}
+        return res.status(400).json(returndata)
+    }
+
+    returndata.message = '사용 가능한 이메일입니다'
+    returndata.result = {success: true}
+    return res.status(200).send(returndata)
+})
+
 // 닉네임 중복 확인
-router.post('/check-duplication', async (req,res)=>{
+router.post('/check-duplication-nickname', async (req,res)=>{
     let returndata = {"message":null, "result":{}}
 
     const nickname = req.body.nickname
