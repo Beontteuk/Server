@@ -59,7 +59,7 @@ router.get('/:id', async (req,res)=>{
     await pg.disconnect()
 
     returndata.message = '특정 아이디어 불러오기 성공'
-    if(result.rows != undefined) {
+    if(result.rows[0] != undefined) {
         returndata.result = result.rows[0];
     }
     
