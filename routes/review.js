@@ -3,7 +3,7 @@ const router = express.Router()
 const postgresql = require('../lib/postgresql')
 
 //리뷰 목록 불러오기
-router.get('/', async (req,res)=>{
+router.get('/get', async (req,res)=>{
     let returndata = {"message":null, "result":{}}
 
     const pg = new postgresql()
