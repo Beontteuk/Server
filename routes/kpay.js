@@ -49,7 +49,7 @@ router.get('/', (req,res) => {
     
 });
 
-router.get('purchase/5000', (req, res)=>{
+router.get('/purchase/5000', (req, res)=>{
     get_info(req, res);
 });
 
