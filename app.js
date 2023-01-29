@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.static(__dirname + "/"));
 app.use('/style', express.static(__dirname + '/stylesheets'))
 app.use('/images', express.static(__dirname + '/images'))
+app.use('/js', express.static(__dirname + '/javascripts'))
 
 app.use('/', require('./routes/page.js'))
 app.use('/data', require('./routes/data.js'))
@@ -28,6 +29,8 @@ app.use('/mail', require('./routes/mail.js'))
 app.use('/upload', require('./routes/upload.js'))
 app.use('/search', require('./routes/search.js'))
 app.use('/kpay', require('./routes/kpay.js'))
+
+app.use('/yeojun', require('./routes/yeojun.js'))
 
 http.listen(port, () => {
   console.log(`server listening on *:${port}`)

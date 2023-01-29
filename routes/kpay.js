@@ -12,7 +12,7 @@ let params = {
     'total_amount': 5000,
     'vat_amount': 200,
     'tax_free_amount': 0,
-    'approval_url': 'http://54.83.101.17:8080/kpay',
+    'approval_url': 'http://54.83.101.17:8080',
     'fail_url': 'http://54.83.101.17:8080',
     'cancel_url': 'http://54.83.101.17:8080',
 };
@@ -39,10 +39,17 @@ const path = require("path")
 const request = require('request-promise-native');
 
 router.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname, "../views/kpay.html"));
+    token =req.query.pg_token
+    if(token===undefined){
+        res.sendFile(path.join(__dirname, "../views/kpay.html"));
+    }
+    else {
+        res.send("결제 성공")
+    }
+    
 });
 
-router.get('/5000', (req, res)=>{
+router.get('purchase/5000', (req, res)=>{
     get_info(req, res);
 });
 
@@ -54,7 +61,9 @@ async function get_info(req, res){
             }
         });
         //console.log(JSON.parse(result))
+        
         data = JSON.parse(result)
+        console.log(data)
         //console.log(data.next_redirect_pc_url)
         res.redirect(data.next_redirect_pc_url)
         // redir_address = result.next_redirect_pc_url;
