@@ -12,9 +12,9 @@ let params = {
     'total_amount': 5000,
     'vat_amount': 200,
     'tax_free_amount': 0,
-    'approval_url': 'http://54.83.101.17:8080',
-    'fail_url': 'http://54.83.101.17:8080',
-    'cancel_url': 'http://54.83.101.17:8080',
+    'approval_url': 'http://54.83.101.17:8080/kpay',
+    'fail_url': 'http://54.83.101.17:8080/kpay',
+    'cancel_url': 'http://54.83.101.17:8080/kpay',
 };
 
 let options = {
@@ -40,6 +40,8 @@ const request = require('request-promise-native');
 
 router.get('/', (req,res) => {
     token =req.query.pg_token
+    console.log("token")
+    console.log(token)
     if(token===undefined){
         res.sendFile(path.join(__dirname, "../views/kpay.html"));
     }
@@ -65,7 +67,9 @@ async function get_info(req, res){
         data = JSON.parse(result)
         console.log(data)
         //console.log(data.next_redirect_pc_url)
-        res.redirect(data.next_redirect_pc_url)
+        res.redirect(data.next_redirect_mobile_url)
+        
+       // res.redirect(data.next_redirect_pc_url)
         // redir_address = result.next_redirect_pc_url;
         // res.send(redir_address);
         //res.send(JSON.parse(result));
