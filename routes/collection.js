@@ -20,6 +20,14 @@ router.post('/add', async (req,res)=>{
         `
     ,[data.user_id, data.idea_id])
 
+    await pg.client.query(
+        `
+        UPDATE ideas
+        SET collection_cnt = collection_cnt + 1
+        WHERE user_id = $1
+        `
+    ,[data.idea_id])
+
     await pg.disconnect()
 
     returndata.message = "컬렉션에 추가되었습니다"

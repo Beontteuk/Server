@@ -26,9 +26,9 @@ app.use('/review', require('./routes/review.js'))
 app.use('/userinfo', require('./routes/userinfo.js'))
 app.use('/mail', require('./routes/mail.js'))
 app.use('/upload', require('./routes/upload.js'))
+app.use('/search', require('./routes/search.js'))
 
 http.listen(port, () => {
   console.log(`server listening on *:${port}`)
 })
 console.log("------- server is running -------");
-

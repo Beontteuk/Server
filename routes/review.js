@@ -22,6 +22,30 @@ router.get('/get', async (req,res)=>{
     return res.status(200).json(returndata)
 })
 
+//특정 아이디어에 달린 리뷰 목록 불러오기
+router.get('/get/:id', async (req,res)=>{
+    const id = req.params.id;
+
+    let returndata = {"message":null, "result":{}}
+
+    const pg = new postgresql()
+    await pg.connect()
+
+    const result = await pg.client.query(
+        `
+        SELECT * FROM reviews 
+        WHERE idea_id=$1; 
+        `
+    ,[id]
+    )
+
+    await pg.disconnect()
+
+    returndata.message = '아이디어에 달린 리뷰 목록 불러오기 성공'
+    returndata.result = result.rows;
+    return res.status(200).json(returndata)
+})
+
 //리뷰 작성하기
 router.post('/create', async (req,res)=>{
     let returndata = {"message":null, "result":{}}
@@ -33,8 +57,6 @@ router.post('/create', async (req,res)=>{
     //title
     //description
     //rate
-    
-
     
 
     const pg = new postgresql()

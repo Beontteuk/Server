@@ -52,3 +52,23 @@ router.get('/get/:id', async (req,res)=>{
 
 
 module.exports = router
+
+// {user_id: 1, 
+//     title: 제목, 
+//     overview: ㅇㅇㅇㅇㅇㅇㅇㅇㅇ요약요약, 
+//     description: 
+//     "{"content":
+//     [{"type":"text","content":"설명…"},
+//     {"type":"text","content":"ㅜㅐㅗㅔㅐㅔㅐㅔ"},
+//     {"type":"image","content":"https://e7.pngegg.com/pngimages/739/17/png-clipart-product-design-rectangle-gray-walls-angle-rectangle.png"},
+//     {"type":"text","content":"3674382647289"},
+//     {"type":"image","content":"https://e7.pngegg.com/pngimages/739/17/png-clipart-product-design-rectangle-gray-walls-angle-rectangle.png"},
+//     {"type":"image","content":"https://e7.pngegg.com/pngimages/739/17/png-clipart-product-design-rectangle-gray-walls-angle-rectangle.png"},
+//     {"type":"text","content":"ㄴㅇㄴㅁㅇㅁㄴㅇㄴㅁㄷㅂ33ㄷㅂㅈ"}],
+//     "hashTags":[]}", 
+//     price: 4321, 
+//     category: 1, 
+//     thumbnail: "https://e7.pngegg.com/pngimages/739/17/png-clipart-product-design-rectangle-gray-walls-angle-rectangle.png", 
+//     is_commercial_available: false, 
+//     is_patent_available: false
+// }
