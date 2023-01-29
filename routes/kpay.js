@@ -12,7 +12,7 @@ let params = {
     'total_amount': 5000,
     'vat_amount': 200,
     'tax_free_amount': 0,
-    'approval_url': 'http://54.83.101.17:8080',
+    'approval_url': 'http://54.83.101.17:8080/kpay',
     'fail_url': 'http://54.83.101.17:8080',
     'cancel_url': 'http://54.83.101.17:8080',
 };
