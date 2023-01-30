@@ -11,7 +11,7 @@ router.get('/', async (req,res)=>{
     const result = await pg.client.query(
         `
         SELECT * FROM ideas
-        ORDER BY created
+        ORDER BY created DESC
         `
     )
     //console.log(result.rows);
