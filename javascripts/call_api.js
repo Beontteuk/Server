@@ -19,7 +19,7 @@ const change_date_text = (date_text) => {
 }
 
 const call_api = async () => {
-    let fetch_return_value = await fetch("http://54.83.101.17:8080/trade/1")
+    let fetch_return_value = await fetch("http://54.83.101.17:8080/trade/bought_idea/1")
                     .then((response) => response.json());
 
     const api_result = fetch_return_value['result'];
