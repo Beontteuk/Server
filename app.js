@@ -11,6 +11,8 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(express.json());
 
+app.set('view engine' , 'pug');
+
 
 app.use(express.static(__dirname + "/"));
 app.use('/style', express.static(__dirname + '/stylesheets'))

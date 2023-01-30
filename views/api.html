@@ -6,6 +6,10 @@
 </head>
 
 <body>
+    <script>
+         urlSearch = new URLSearchParams(location.search);
+            userName = urlSearch.get('userName')
+    </script>
     <h1>API 테스트</h1>
     <hr>
     <button onclick="location.href='/data'">data</button>

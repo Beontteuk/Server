@@ -19,7 +19,9 @@ router.post('/create', async (req,res)=>{
     //is_commercial_available
     //is_patent_available
 
-    
+    //hashtag
+
+    console.log(hastag)
 
     const pg = new postgresql()
     await pg.connect()

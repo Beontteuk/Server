@@ -1,0 +1,81 @@
+doctype html
+head
+  title=title
+  link(rel='stylesheet' href='http://54.83.101.17:8080/style/index.css')
+  link(href='https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap' rel='stylesheet')
+  meta(name='viewport' content='width=device-width,initial-scale=1')
+#root
+  #contents
+    #title_wrapper
+      #title
+        #up_wrapper
+          #up
+            #title_text
+              | &#xAF2C;&#xB9C9; &#xC694;&#xB9AC;&#xACC4;&#xC758; &#xD601;&#xBA85;&#xC801; &#xC544;&#xC774;&#xB514;&#xC5B4;
+        #down_wrapper
+          #down
+            #category_text
+              | &#xCE5C;&#xD658;&#xACBD;, &#xC5D0;&#xCF54; &#xD504;&#xB80C;&#xB4E4;&#xB9AC;
+            #date_text
+              | 2023.01.24
+    .semi_title_wrapper
+      .semi_title
+        | &#xC544;&#xC774;&#xB514;&#xC5B4; &#xC694;&#xC57D;
+    #idea_summary_wrapper
+      #idea_summary_text.font_default_set.font_weight_regular.font_size_16.font_color_black
+        | &#xC5B4;&#xB978;&#xB4E4;&#xC758; &#xC601;&#xC591;&#xAC04;&#xC2DD; &#xAF2C;&#xB9C9; &#xBB34;&#xCE68;, &#xAC04;&#xC7A5; &#xC591;&#xB150;&#xC774; &#xC9C8;&#xB9B0;&#xB2E4;&#xB294; &#xC0DD;&#xAC01; &#xD55C; &#xBC88;&#xCBE4; &#xD574; &#xBCF4;&#xC168;&#xC8E0;?
+        | &#xAF2C;&#xB9C9;&#xACC4;&#xC5D0; &#xD601;&#xBA85;&#xC744; &#xC77C;&#xC73C;&#xD0AC; &#xBE44;&#xC7A5;&#xC758; &#xAF2C;&#xB9C9; &#xC591;&#xB150; &#xC544;&#xC774;&#xB514;&#xC5B4;, &#xC9C0;&#xAE08; &#xD655;&#xC778;&#xD574; &#xBCF4;&#xC138;&#xC694;!
+    #categories_wrapper
+      .categories
+        span#category_1.category_button
+          #category_text_1.category_text_align.font_default_set.font_weight_regular.font_color_black.font_size_16
+            | #&#xAF2C;&#xB9C9;
+        span#category_2.category_button
+          #category_text_2.category_text_align.font_default_set.font_weight_regular.font_color_black.font_size_16
+            | #&#xC640;&#xC0AC;&#xBE44;
+        span#category_3.category_button
+          #category_text_3.category_text_align.font_default_set.font_weight_regular.font_color_black.font_size_16
+            | #&#xC2E0;&#xBC15;&#xD55C;
+        // <br>
+        span#category_4.category_button
+          #category_text_4.category_text_align.font_default_set.font_weight_regular.font_color_black.font_size_16
+            | #&#xCAC4;&#xAE43;&#xCAC4;&#xAE43;
+        span#category_5.category_button
+          #category_text_5.category_text_align.font_default_set.font_weight_regular.font_color_black.font_size_16
+            | #&#xC874;&#xB9DB;
+    #idea_view_button_wrapper
+      #idea_view_button.button_radius_4.font_default_set.font_size_16(onclick='idea_view_button_click(this)')
+        | &#xC544;&#xC774;&#xB514;&#xC5B4; &#xC5F4;&#xB78C;
+    .dividing_line
+    #idea_details_wrapper
+      // 상세 아이디어 추가될 곳
+    #profile_tab_wrapper
+      #profile_tab.font_default_set
+        span#profile
+          span#profile_img_wrapper
+            span.profile_img
+              .profile_img_border
+                img.profile_original_img(src='http://54.83.101.17:8080/images/test_profile.png')
+          span.user_info_text
+            #nickname.font_weight_bold.font_size_18.font_color_black
+              | &#xC640;&#xC0AC;&#xBE44; &#xC131;&#xC560;&#xC790;
+            #idea_number.font_size_16.font_color_grey
+              | &#xD310;&#xB9E4; &#xC544;&#xC774;&#xB514;&#xC5B4; 79&#xAC1C;
+        span.message_button
+          | &#xCABD;&#xC9C0; &#xBCF4;&#xB0B4;&#xAE30;
+    .dividing_line
+    #use_scope_wrapper
+      #use_scope.font_default_set.font_size_20.font_weight_bold(onclick='use_scope_button_click()')
+        span#use_scope_title
+          | &#xC774;&#xC6A9; &#xAC00;&#xB2A5; &#xBC94;&#xC704;
+        span#arrow_icon
+          img#arrow_icon_img(src='http://54.83.101.17:8080/images/icon_arrow_Down.svg')
+    #to_add_use_scope
+      // 이용 가능 범위 detail 추가될 곳
+  #end_line
+  #gray_empty_space.gray_empty_space
+script(src='http://54.83.101.17:8080/js/idea_view_button_click.js')
+script(src='http://54.83.101.17:8080/js/use_scope_button_click.js')
+script(src='http://54.83.101.17:8080/js/call_api.js')
+script.
+  call_api()
