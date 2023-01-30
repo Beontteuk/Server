@@ -23,24 +23,13 @@ router.get('/', async (req,res)=>{
     return res.status(200).json(returndata)
 })
 
-router.get('/:id', async (req,res)=>{
+router.get('/bough_idea/:id', async (req,res)=>{
     const id = req.params.id;
 
     let returndata = {"message":null, "result":{}}
 
     const pg = new postgresql()
     await pg.connect()
-
-    // const result = await pg.client.query(
-    //     `
-    //     SELECT * FROM users
-    //     LEFT JOIN ideas
-    //     ON ideas.user_id = users.index
-    //     WHERE ideas.index=$1
-    //     `
-    // ,[id]
-    // )
-
 
 
     const result = await pg.client.query(

@@ -65,8 +65,8 @@ router.post('/create', async (req,res)=>{
     //리뷰 테이블에 리뷰 추가
     await pg.client.query(
         `
-        INSERT INTO reviews(customer_id, idea_id, title, description, rate, created)
-        VALUES($1, $2, $3, $4, $5, NOW())
+        INSERT INTO reviews(customer_id, idea_id, description, rate, created)
+        VALUES($1, $2, $3, $5, NOW())
         `
     ,[data.customer_id, data.idea_id, data.title, data.description, data.rate])
     //아이디어 테이블에 별점 추가, 별점 카운트 1 증가, 별점 계산

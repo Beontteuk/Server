@@ -94,6 +94,20 @@
     <form>
         <input type="button" value="리뷰 페이지 이동" onclick="MessageInvoker.postMessage('push reviewPage');" />
     </form>
+
+    <h2>특정 아이디어 불러오기</h2>
+    <form action="/trade/specific" method="post">
+        <p><input type="number" name="user_id" placeholder="유저 아이디 입력"></p>
+        <p><input type="number" name="idea_id" placeholder="아이디어 아이디 입력"></p>
+
+        <p><textarea name="description">쪽지 내용</textarea></p>
+        <p>
+            <input type="submit" value="SEND">
+        </p>
+    </form>
+    <form>
+        <input type="button" value="리뷰 페이지 이동" onclick="MessageInvoker.postMessage('push reviewPage');" />
+    </form>
     
 </body>
 
