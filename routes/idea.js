@@ -21,7 +21,7 @@ router.post('/create', async (req,res)=>{
 
     //hashtag
 
-    console.log(hastag)
+    console.log(data.hashtag)
 
     const pg = new postgresql()
     await pg.connect()
