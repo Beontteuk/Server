@@ -19,6 +19,8 @@ app.use('/style', express.static(__dirname + '/stylesheets'))
 app.use('/images', express.static(__dirname + '/images'))
 app.use('/js', express.static(__dirname + '/javascripts'))
 
+// app.use('/flutter', express.static(__dirname + '/web'))
+
 app.use('/', require('./routes/page.js'))
 app.use('/data', require('./routes/data.js'))
 app.use('/account', require('./routes/account.js'))
